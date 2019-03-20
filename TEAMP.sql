@@ -1,0 +1,79 @@
+CREATE TABLE MEMBER (
+MNO         NUMBER CONSTRAINT MEMBER_MNO_PK PRIMARY KEY,
+MNAME       VARCHAR2(20) NOT NULL,
+EMAIL       VARCHAR2(30) CONSTRAINT MEMBER_EMAIL UNIQUE,
+CRE_DATE    DATE
+);
+
+ALTER   TABLE MEMBER
+MODIFY  CRE_DATE CONSTRAINT MEMBER_CRE_DATE_NN NOT NULL;
+
+SELECT  *
+FROM    MEMBER;
+
+DESC    MEMBER;
+
+CREATE TABLE BOARD (
+NO          NUMBER CONSTRAINT BOARD_NO_PK PRIMARY KEY,
+TITLE       VARCHAR2(50) NOT NULL,
+CONTENT     VARCHAR2(500) NOT NULL,
+MNO          NUMBER CONSTRAINT BOARD_WRITER_FK REFERENCES MEMBER(MNO) NOT NULL,
+CRE_DATE    DATE NOT NULL,
+MOD_DATE    DATE
+);
+
+SELECT  *
+FROM    BOARD;
+
+DESC    BOARD;
+
+drop table member;
+drop table board;
+
+
+CREATE TABLE MEMBER (
+MNO         NUMBER          CONSTRAINT MEMBER_MNO_PK PRIMARY KEY,
+MNAME       VARCHAR2(20)    NOT NULL,
+EMAIL       VARCHAR2(30)    CONSTRAINT MEMBER_EMAIL UNIQUE,
+PASSWORD    VARCHAR2(20)    NOT NULL,
+CRE_DATE    DATE            NOT NULL
+);
+
+SELECT  *
+FROM    MEMBER;
+
+DESC    MEMBER;
+
+CREATE TABLE BOARD (
+NO          NUMBER          CONSTRAINT BOARD_NO_PK PRIMARY KEY,
+TITLE       VARCHAR2(50)    NOT NULL,
+CONTENT     VARCHAR2(500)   NOT NULL,
+MNO         NUMBER          CONSTRAINT BOARD_WRITER_FK REFERENCES MEMBER(MNO) NOT NULL,
+CRE_DATE    DATE            NOT NULL,
+MOD_DATE    DATE
+);
+
+SELECT  *
+FROM    BOARD;
+
+DESC    BOARD;
+
+create sequence member_mno_seq
+INCREMENT by 1
+start with 1;
+
+insert into member
+(mno, email, password, mname, cre_date)
+values(member_mno_seq.nextval, 's1@test.com', '1111'
+, '홍길동', sysdate);
+
+
+create SEQUENCE board__no_seq
+START WITH 1
+INCREMENT BY 1;
+
+insert into board
+(no, title, content, mno, cre_date, mod_date)
+values(board__no_seq.nextval, '첫번째게시글제목', '첫번째 게시글 내용'
+, 1, sysdate, sysdate);
+
