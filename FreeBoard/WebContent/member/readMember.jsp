@@ -24,29 +24,29 @@
 		<table>
 			<tr>
 				<td>회원 번호</td>
-				<td>${member.memberNo}</td>
+				<td>${member[0].memberNo}</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>회원 이름</td>
-				<td>${member.memberName}</td>
+				<td>${member[0].memberName}</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td>${member.email}</td>
+				<td>${member[0].email}</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td>가입일</td>
-				<td>${member.createDate}</td>
+				<td>${member[0].createDate}</td>
 				<td></td>
 			</tr>
 		</table><br>
 		
 		<a href='./login'>돌아가기</a>
-		<a href='./update?no=${member.memberNo}'>수정</a>
-		<a href='./delete?no=${member.memberNo}'>삭제</a>
+		<a href='./update?no=${member[0].memberNo}'>수정</a>
+		<a href='./delete?no=${member[0].memberNo}'>삭제</a>
 	</div>
 	<jsp:include page="/Footer.jsp" />
 	
