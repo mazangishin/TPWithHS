@@ -40,9 +40,9 @@
 			<td id='date' colspan='2'>작성일:${boardDto.creDate} 수정일:${boardDto.modDate}</td>
 		</tr>
 	</table>
-	<button onclick='location.href="./update?no=${boardDto.no}"'>수정하기</button>
-	<button onclick='location.href="./delete?no=${boardDto.no}"'>수정하기</button>
-	<td><a href='./delete?no=${boardDto.no}'>[삭제]</a></td>
+	<button onclick='location.href="./update?no=${boardDto.no}"'>수정</button>
+	<button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button>
+	
 	
 </body>
 </html>

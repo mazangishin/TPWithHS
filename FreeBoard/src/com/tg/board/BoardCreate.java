@@ -39,7 +39,12 @@ public class BoardCreate extends HttpServlet{
 		
 		
 		String sql = "";
-		  
+		 
+		HttpSession session = req.getSession();
+		MemberDto member = (MemberDto)session.getAttribute("member");
+		
+		System.out.println(member.getMemberNo());
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -50,8 +55,7 @@ public class BoardCreate extends HttpServlet{
 			 
 			pstmt = conn.prepareStatement(sql);
 			
-			HttpSession session = req.getSession();
-			MemberDto member = (MemberDto)session.getAttribute("member");
+
 			
 			int no = 0;
 			int mNo = member.getMemberNo();
@@ -65,35 +69,39 @@ public class BoardCreate extends HttpServlet{
 			pstmt.setString(2, content);
 			pstmt.setInt(3, mNo);
 			
-			rs = pstmt.executeQuery();
+//			pstmt.executeQuery();
 			
-			res.setContentType("text/html");
-			res.setCharacterEncoding("UTF-8");
+			pstmt.executeUpdate();
+			
+			res.sendRedirect("./list");
+			
+//			res.setContentType("text/html");
+//			res.setCharacterEncoding("UTF-8");
 			
 	
 			
 			
 			
-			BoardDto boardDto = null;
-			while(rs.next()) {
-				no = rs.getInt("NO");
-				mNo = rs.getInt("MNO");
-				title = rs.getString("TITLE");
-				content = rs.getString("CONTENT");
-				creDate = rs.getDate("CRE_DATE");
-				modDate = rs.getDate("MOD_DATE");
-			
-				boardDto = new BoardDto(no, mNo, title, content, creDate, modDate);
-				
-				
-			}
-			
-			req.setAttribute("boardDto", boardDto);
+//			BoardDto boardDto = null;
+//			while(rs.next()) {
+//				no = rs.getInt("NO");
+//				mNo = rs.getInt("MNO");
+//				title = rs.getString("TITLE");
+//				content = rs.getString("CONTENT");
+//				creDate = rs.getDate("CRE_DATE");
+//				modDate = rs.getDate("MOD_DATE");
+//			
+//				boardDto = new BoardDto(no, mNo, title, content, creDate, modDate);
+//				
+//				
+//			}
+//			
+//			req.setAttribute("boardDto", boardDto);
 			
 //			RequestDispatcher dispatcher = req.getRequestDispatcher("./board/readView.jsp");
-			RequestDispatcher dispatcher = req.getRequestDispatcher("./list");
+//			RequestDispatcher dispatcher = req.getRequestDispatcher("./list");
 			
-			dispatcher.forward(req, res);
+//			dispatcher.forward(req, res);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -42,7 +42,7 @@
 				<td colspan='2'><textarea name='content' rows="30" cols="200">${boardDto.content}</textarea></td>
 			</tr>
 		</table>
-		<button type="submit">수정</button>
+		<input type="submit" value='수정'>
 	</form>
 </body>
 </html>

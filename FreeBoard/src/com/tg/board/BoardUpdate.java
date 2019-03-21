@@ -128,7 +128,7 @@ public class BoardUpdate extends HttpServlet{
 		
 		
 		String sql = "";
-		  
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
@@ -143,18 +143,18 @@ public class BoardUpdate extends HttpServlet{
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			
-			
+			System.out.println(req.getParameter("no"));
 			
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setInt(3, no);
 			
-			rs = pstmt.executeQuery();
-			
-			
-			RequestDispatcher dispatcher = req.getRequestDispatcher("./list.jsp");
-			
-			dispatcher.forward(req, res);
+			pstmt.executeUpdate();
+			res.sendRedirect("./list");
+//			
+//			RequestDispatcher dispatcher = req.getRequestDispatcher("./list");
+//			
+//			dispatcher.forward(req, res);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

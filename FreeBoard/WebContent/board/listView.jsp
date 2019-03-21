@@ -18,13 +18,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="/Header.jsp"/>
 <table>
+
 <h2>게시판 목록</h2>
 	<button onclick='location.href="./create"'>글쓰기</button>
 		<tr>
 			<td id='no'>번호</td><td>작성자</td>
 			<td>제목</td><td>작성일</td>
-			<td>수정일</td><td></td>
+			<td>수정일</td><td></td><td></td>
 		</tr>	
 		<tr>
 	<c:forEach var="boardDto" items="${boardList}">
@@ -33,8 +35,8 @@
 			<td><a href='./read?no=${boardDto.no}'>${boardDto.title}</a></td>
 			<td>${boardDto.creDate}</td>
 			<td>${boardDto.modDate}</td>
-			<td><a href='./delete?no=${boardDto.no}'>[삭제]</a></td>
-			<button onclick='location.href="./update?no=${boardDto.no}"'>수정하기</button>
+			<td><button onclick='location.href="./update?no=${boardDto.no}"'>수정</button></td>
+			<td><button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button></td>
 		</tr>
 	</c:forEach>
 	</table>
