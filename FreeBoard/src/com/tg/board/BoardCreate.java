@@ -13,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.tg.member.MemberDto;
 @WebServlet(value="/board/create")
 public class BoardCreate extends HttpServlet{
 
@@ -46,8 +49,11 @@ public class BoardCreate extends HttpServlet{
 			 
 			pstmt = conn.prepareStatement(sql);
 			
+			HttpSession session = req.getSession();
+			MemberDto member = (MemberDto)session.getAttribute("member");
+			
 			int no = 0;
-			int mNo = ;
+			int mNo = member.getMemberNo();
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			Date creDate = null;

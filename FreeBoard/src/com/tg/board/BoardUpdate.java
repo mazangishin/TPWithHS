@@ -34,11 +34,10 @@ public class BoardUpdate extends HttpServlet{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			
-			sql = "SELECT B.NO, M.EMAIL, B.TITLE, B.CONTENT, B.CRE_DATE, B.MOD_DATE";
-			sql += " FROM BOARD B, MEMBER M";
-			sql += " WHERE B.MNO = M.MNO";
-			sql += " AND NO = ?";
-			sql += " ORDER BY NO ASC"; 
+			sql = "SELECT NO, MNO, TITLE, CONTENT, CRE_DATE, MOD_DATE";
+			sql += " FROM BOARD";
+			sql += " WHERE NO = ?";
+			
 			 
 			pstmt = conn.prepareStatement(sql);
 			
@@ -53,7 +52,7 @@ public class BoardUpdate extends HttpServlet{
 			
 	
 			
-			String writer = "";
+			String mNo = "";
 			String title = "";
 			String content = "";
 			Date creDate = null;
@@ -62,13 +61,13 @@ public class BoardUpdate extends HttpServlet{
 			BoardDto boardDto = null;
 			while(rs.next()) {
 				no = rs.getInt("NO");
-				writer = rs.getString("EMAIL");
+				mNo = rs.getString("MNO");
 				title = rs.getString("TITLE");
 				content = rs.getString("CONTENT");
 				creDate = rs.getDate("CRE_DATE");
 				modDate = rs.getDate("MOD_DATE");
 			
-				boardDto = new BoardDto(no, writer, title, content, creDate, modDate);
+				boardDto = new BoardDto(no, mNo, title, content, creDate, modDate);
 				
 				
 			}
@@ -140,44 +139,19 @@ public class BoardUpdate extends HttpServlet{
 			pstmt = conn.prepareStatement(sql);
 			
 			int no = Integer.parseInt(req.getParameter("no"));
-			int mNo = 0;
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
-			Date creDate = null;
-			Date modDate = null;
 			
-			pstmt.setInt(1, no);
-			pstmt.setString(2, title);
-			pstmt.setString(3, content);
-			pstmt.setInt(4, mNo);
+			
+			
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, no);
 			
 			rs = pstmt.executeQuery();
 			
-			res.setContentType("text/html");
-			res.setCharacterEncoding("UTF-8");
 			
-	
-			
-			
-			
-			BoardDto boardDto = null;
-			while(rs.next()) {
-				no = rs.getInt("NO");
-				mNo = rs.getInt("MNO");
-				title = rs.getString("TITLE");
-				content = rs.getString("CONTENT");
-				creDate = rs.getDate("CRE_DATE");
-				modDate = rs.getDate("MOD_DATE");
-			
-				boardDto = new BoardDto(no, mNo, title, content, creDate, modDate);
-				
-				
-			}
-			
-			req.setAttribute("boardDto", boardDto);
-			
-//			RequestDispatcher dispatcher = req.getRequestDispatcher("./board/readView.jsp");
-			RequestDispatcher dispatcher = req.getRequestDispatcher("./createView.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("./list.jsp");
 			
 			dispatcher.forward(req, res);
 			
