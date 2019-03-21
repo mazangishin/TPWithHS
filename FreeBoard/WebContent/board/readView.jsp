@@ -41,6 +41,8 @@
 		</tr>
 	</table>
 	<button onclick='location.href="./update?no=${boardDto.no}"'>수정하기</button>
+	<button onclick='location.href="./delete?no=${boardDto.no}"'>수정하기</button>
+	<td><a href='./delete?no=${boardDto.no}'>[삭제]</a></td>
 	
 </body>
 </html>

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -52,12 +53,14 @@ public class LogInServlet extends HttpServlet {
 
 		String sql = "";
 		int colIndex = 1;
-
+		int memberNo = 0;
+		Date creDate = null;
+		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 
-			sql = "SELECT MNAME, EMAIL";
+			sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE";
 			sql += " FROM MEMBER";
 			sql += " WHERE EMAIL = ?";
 			sql += " AND PASSWORD = ?";
@@ -73,10 +76,12 @@ public class LogInServlet extends HttpServlet {
 			res.setCharacterEncoding("UTF-8");
 
 			if (rs.next()) {
-				email = rs.getString("email");
-				name = rs.getString("mname");
+				memberNo = rs.getInt("MNO");
+				email = rs.getString("EMAIL");
+				name = rs.getString("MNAME");
+				creDate = rs.getDate("CRE_DATE");
 
-				MemberDto memberDto = new MemberDto(name, email);
+				MemberDto memberDto = new MemberDto(memberNo, name, email, creDate);
 
 				HttpSession session = req.getSession();
 				session.setAttribute("member", memberDto);

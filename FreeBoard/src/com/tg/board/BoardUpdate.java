@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(value="/board/update")
 public class BoardUpdate extends HttpServlet{
 
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -189,3 +190,4 @@ public class BoardUpdate extends HttpServlet{
 		}
 	}
 }
+

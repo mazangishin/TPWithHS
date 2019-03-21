@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet(value = "/member/read")
-public class MemberRead extends HttpServlet {
+public class ReadMember extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) 
@@ -36,10 +36,7 @@ public class MemberRead extends HttpServlet {
 		MemberDto member = (MemberDto)session.getAttribute("member");
 		
 		String email = member.getEmail();
-		String pwd = member.getPassword();
-		
-//		HttpSession session = req.getSession();//세션가져옴
-//	    MDto memberDto2.getEmail= (MDto)session.getAttribute("member");//형변환
+	//	String pwd = member.getPassword();
 		
 		String sql = "";
 		int colIndex = 1;
@@ -51,15 +48,15 @@ public class MemberRead extends HttpServlet {
 			sql = "SELECT MNO, MNAME, EMAIL, CRE_DATE";
 			sql += " FROM MEMBER";
 			sql += " WHERE EMAIL = ?";
-			sql += " AND PASSWORD = ?";
+		//	sql += " AND PASSWORD = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 
 			pstmt.setString(colIndex++, email);
-			pstmt.setString(colIndex, pwd);
+		//	pstmt.setString(colIndex, pwd);
 			
 			rs = pstmt.executeQuery();
-			
+
 			res.setContentType("text/html");
 			res.setCharacterEncoding("UTF-8");
 			
@@ -67,27 +64,26 @@ public class MemberRead extends HttpServlet {
 			
 			int memberNo = 0;
 			String memberName = "";
-			String memberemail = "";
+			String memberEmail = "";
 			Date createDate = null;
 			
 			while(rs.next()) {
 			memberNo = rs.getInt("MNO");
 			memberName = rs.getString("MNAME");
-			memberemail = rs.getString("EMAIL");
+			memberEmail = rs.getString("EMAIL");
 			createDate = rs.getDate("CRE_DATE");
 			
 			MemberDto memberDto = new MemberDto
-					(memberNo, memberName, memberemail, createDate);
+					(memberNo, memberName, memberEmail, createDate);
 			memberInfo.add(memberDto);
 			}
 			
 			req.setAttribute("member", memberInfo);
 			
-			
 			RequestDispatcher dispatcher = 
 					req.getRequestDispatcher("/member/readMember.jsp");
 			
-			dispatcher.include(req, res);
+			dispatcher.forward(req, res);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

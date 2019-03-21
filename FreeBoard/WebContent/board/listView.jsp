@@ -34,6 +34,7 @@
 			<td>${boardDto.creDate}</td>
 			<td>${boardDto.modDate}</td>
 			<td><a href='./delete?no=${boardDto.no}'>[삭제]</a></td>
+			<button onclick='location.href="./update?no=${boardDto.no}"'>수정하기</button>
 		</tr>
 	</c:forEach>
 	</table>
