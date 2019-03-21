@@ -122,3 +122,4 @@ public class BoardRead extends HttpServlet{
 	
 	}
 }
+

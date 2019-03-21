@@ -1,3 +1,4 @@
+
 package com.tg.board;
 
 import java.io.IOException;
@@ -116,3 +117,4 @@ public class BoardList extends HttpServlet{
 	
 	
 }
+
