@@ -84,7 +84,7 @@ public class UpdateMember extends HttpServlet{
 			RequestDispatcher dispatcher = 
 					req.getRequestDispatcher("./updateMemberForm.jsp");
 			
-			dispatcher.include(req, res);
+			dispatcher.forward(req, res);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
