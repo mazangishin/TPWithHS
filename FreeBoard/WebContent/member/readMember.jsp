@@ -44,10 +44,11 @@
 			</tr>
 		</table><br>
 		
-		<a href='./login'>돌아가기</a>
-		<a href='./update?no=${member[0].memberNo}'>수정</a>
-		<a href='./delete?no=${member[0].memberNo}'>삭제</a>
+		<input type="button" value="수정" onclick="location.href = './update?no=${member[0].memberNo}'">
+		<input type="button" value="삭제" onclick="location.href = './delete?no=${member[0].memberNo}'">
+		<input type="button" value="돌아가기" onclick="location.href = '../index.jsp'">
 	</div>
+	
 	<jsp:include page="/Footer.jsp" />
 	
 </body>

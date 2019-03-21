@@ -8,7 +8,7 @@
 
 <script type="text/javascript">
 	function backPageFnc(){
-		location.href = './view';
+		location.href = './read';
 	}
 	
 	function deleteUserFnc() {
@@ -16,7 +16,7 @@
 		
 		var memberNo = obj.value;
 		
-		location.href = './delete?no=' + memberNo;
+		location.href = './delete?no=' + ${member.memberNo};
 	}
 </script>
 </head>

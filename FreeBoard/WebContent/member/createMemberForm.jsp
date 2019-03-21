@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 등록</title>
+
+<script type="text/javascript">
+	function backPageFnc(){
+		location.href = '../index.jsp';
+	}
+</script>
+	
 </head>
 <body>
 	<jsp:include page="/Header.jsp"/>
@@ -16,6 +23,7 @@
 		이름:    <input type="text" name='name'><br>
 		<input type="submit" value="추가">
 		<input type="reset" value="취소">
+		<input type="button" value="돌아가기" onclick="backPageFnc();">
 	</form>
 
 	<jsp:include page="/Footer.jsp"/>

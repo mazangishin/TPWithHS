@@ -126,8 +126,8 @@ public class UpdateMember extends HttpServlet{
 		PreparedStatement pstmt = null;
 
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "jsp";
-		String password = "jsp";
+		String user = "TEAMP";
+		String password = "SORK1EMD";
 
 		req.setCharacterEncoding("UTF-8");
 
@@ -145,7 +145,7 @@ public class UpdateMember extends HttpServlet{
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 
-			sql = "UPDATE MEMBERS";
+			sql = "UPDATE MEMBER";
 			sql += " SET EMAIL = ?, MNAME = ?";
 			sql += " WHERE MNO = ?";
 
@@ -157,7 +157,7 @@ public class UpdateMember extends HttpServlet{
 
 			pstmt.executeUpdate();
 
-			res.sendRedirect("./view");
+			res.sendRedirect("./read");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

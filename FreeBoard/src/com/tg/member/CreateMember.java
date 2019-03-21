@@ -59,13 +59,12 @@ public class CreateMember extends HttpServlet{
 
 			pstmt.executeUpdate();
 
-			res.sendRedirect("/member/view");
+			res.sendRedirect("./read");
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			if (pstmt != null) {

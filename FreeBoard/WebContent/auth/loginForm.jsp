@@ -6,6 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<script type="text/javascript">
+	function backPageFnc(){
+		location.href = '../index.jsp';
+	}
+</script>
+	
 <script type="text/javascript">
 	function loginSubmitFnc(){
 		var formObj = document.getElementById('loginForm');
@@ -52,6 +59,7 @@
 					이메일:	<input type="text" id='email' name="email"><br>
 					암호: 	<input type="password" id='pwd' name="password"><br>
 							<input type="button" value="로그인" onclick="loginSubmitFnc();">
+							<input type="button" value="돌아가기" onclick="backPageFnc();">
 				</form>
 				</td>
 			</tr>	
