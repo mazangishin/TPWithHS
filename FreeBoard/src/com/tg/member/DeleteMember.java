@@ -50,7 +50,7 @@ public class DeleteMember extends HttpServlet{
 
 			pstmt.executeUpdate();
 			
-			res.sendRedirect("./view");
+			res.sendRedirect("../index.jsp");
 
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
