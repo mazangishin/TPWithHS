@@ -18,7 +18,10 @@
 	<a href="./auth/board">게시판으로 가기</a>
 	</h1>
 	<br>
-	
+	<h2>
+	<a href="./member/create">회원가입</a>
+	</h2>
+	<br>
 	<jsp:include page="./Footer.jsp"/>
 </body>
 </html>
