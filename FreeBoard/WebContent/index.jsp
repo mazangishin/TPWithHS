@@ -15,7 +15,7 @@
 	</h1>
 	<br>
 	<h1>
-	<a href="./auth/board">게시판으로 가기</a>
+	<a href="./board/list">게시판으로 가기</a>
 	</h1>
 	<br>
 	<h2>

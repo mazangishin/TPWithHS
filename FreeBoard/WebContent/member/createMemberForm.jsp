@@ -8,6 +8,7 @@
 
 <script type="text/javascript">
 	function backPageFnc(){
+		alert("사용자의 계정을 생성했습니다.");
 		location.href = '../index.jsp';
 	}
 </script>

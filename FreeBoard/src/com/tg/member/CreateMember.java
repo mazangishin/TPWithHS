@@ -59,7 +59,7 @@ public class CreateMember extends HttpServlet{
 
 			pstmt.executeUpdate();
 
-			res.sendRedirect("./read");
+			res.sendRedirect("../index.jsp");
 
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
