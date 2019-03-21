@@ -35,8 +35,12 @@
 			<td><a href='./read?no=${boardDto.no}'>${boardDto.title}</a></td>
 			<td>${boardDto.creDate}</td>
 			<td>${boardDto.modDate}</td>
-			<td><button onclick='location.href="./update?no=${boardDto.no}"'>수정</button></td>
-			<td><button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button></td>
+			<td><c:if test="${sessionScope.member.email eq boardDto.writer}">
+				<button onclick='location.href="./update?no=${boardDto.no}"'>수정</button></c:if>
+			</td>
+			<td><c:if test="${sessionScope.member.email eq boardDto.writer}">
+				<button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button></c:if>
+			</td>
 		</tr>
 	</c:forEach>
 	</table>

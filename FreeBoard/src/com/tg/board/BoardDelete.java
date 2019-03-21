@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -20,30 +21,27 @@ public class BoardDelete extends HttpServlet{
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		
-		
-		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "jsp";
-		String password = "jsp";
+		String user = "TEAMP"; 
+		String password = "SORK1EMD";
 		
-		int mNo = Integer.parseInt(req.getParameter("no"));
+		int no = Integer.parseInt(req.getParameter("no"));
 		
 		String sql = "";
 		
 		try {
-			Class.forName(driver);
-			System.out.println("오라클 드라이버 로드");
-			
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, user, password);
 			
 			
-			sql += "DELETE FROM MEMBERS";
-			sql += " WHERE MNO = ?";
+			sql += "DELETE FROM BOARD";
+			sql += " WHERE NO = ?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setInt(1, mNo);
+			pstmt.setInt(1, no);
 			
 			pstmt.executeUpdate();
 			
@@ -83,65 +81,6 @@ public class BoardDelete extends HttpServlet{
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		System.out.println("MemberAddServlet의 doPost를 탄다");
-		
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "jsp";
-		String password =" jsp";
-		
-		req.setCharacterEncoding("UTF-8");
-		
-		String emailStr = req.getParameter("email");
-		String name = req.getParameter("name");
-		int mNo = Integer.parseInt(req.getParameter("mNo"));
-		
-		String sql = "";
-		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection(url, user, password);
-			
-			sql += "UPDATE MEMBERS";
-			sql += " SET EMAIL = ?, MNAME = ?, MOD_DATE = SYSDATE";
-			sql += " WHERE MNO = ?";
-			
-			pstmt = conn.prepareStatement(sql);
-			 
-			pstmt.setString(1, emailStr);
-			pstmt.setString(2, name);
-			pstmt.setInt(3, mNo);
-			
-			pstmt.executeUpdate();
-			
-			res.sendRedirect("./list");
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			if(pstmt != null) {
-				try {
-					pstmt.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			
-			if(conn != null) {
-				try {
-					conn.close();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		} // finally end
-		
 	}
 	
 }

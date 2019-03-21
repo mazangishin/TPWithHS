@@ -40,9 +40,10 @@
 			<td id='date' colspan='2'>작성일:${boardDto.creDate} 수정일:${boardDto.modDate}</td>
 		</tr>
 	</table>
-	<button onclick='location.href="./update?no=${boardDto.no}"'>수정</button>
-	<button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button>
-	
+	<c:if test="${sessionScope.member.email eq boardDto.writer}">
+		<button onclick='location.href="./update?no=${boardDto.no}"'>수정</button>
+		<button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button>
+	</c:if>
 	
 </body>
 </html>
