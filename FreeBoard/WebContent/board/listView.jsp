@@ -16,6 +16,15 @@
 	#title{
 		width: 400px;
 	}
+	.no{
+		text-align: center;
+	}
+	.writer{
+		text-align: center;
+	}
+	.date{
+		text-align: center;
+	}
 </style>
 <title>게시판 목록</title>
 </head>
@@ -34,17 +43,17 @@
 		</c:if>
 		
 			<tr>
-				<td id='no'>번호</td><td>작성자</td>
-				<td id='title'>제목</td><td>작성일</td>
-				<td>수정일</td>
+				<td class='no'>번호</td><td class='writer'>작성자</td>
+				<td id='title'>제목</td><td class='date'>작성일</td>
+				<td class='date'>수정일</td>
 			</tr>	
 			<tr>
 		<c:forEach var="boardDto" items="${boardList}">
-				<td>${boardDto.no}</td>
-				<td>${boardDto.writer}</td>
+				<td class='no'>${boardDto.no}</td>
+				<td class='writer'>${boardDto.writer}</td>
 				<td><a href='./read?no=${boardDto.no}'>${boardDto.title}</a></td>
-				<td>${boardDto.creDate}</td>
-				<td>${boardDto.modDate}</td>
+				<td class='date'>${boardDto.creDate}</td>
+				<td class='date'>${boardDto.modDate}</td>
 				
 			</tr>
 		</c:forEach>
