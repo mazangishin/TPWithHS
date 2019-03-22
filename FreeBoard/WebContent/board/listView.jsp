@@ -12,18 +12,15 @@
 	}
 	table, tr, td{
 		border: 1px solid black;
+		text-align: center;
 	}
 	#title{
 		width: 400px;
+		
 	}
-	.no{
-		text-align: center;
-	}
-	.writer{
-		text-align: center;
-	}
-	.date{
-		text-align: center;
+	
+	#first{
+		background-color: #FAF4C0;
 	}
 </style>
 <title>게시판 목록</title>
@@ -42,18 +39,18 @@
 			<button onclick='location.href="../auth/login"'>글쓰기</button>
 		</c:if>
 		
-			<tr>
-				<td class='no'>번호</td><td class='writer'>작성자</td>
-				<td id='title'>제목</td><td class='date'>작성일</td>
-				<td class='date'>수정일</td>
+			<tr id='first'>
+				<td>번호</td><td>작성자</td>
+				<td id='title'>제목</td><td>작성일</td>
+				<td>수정일</td>
 			</tr>	
 			<tr>
 		<c:forEach var="boardDto" items="${boardList}">
-				<td class='no'>${boardDto.no}</td>
-				<td class='writer'>${boardDto.writer}</td>
+				<td>${boardDto.no}</td>
+				<td>${boardDto.writer}</td>
 				<td><a href='./read?no=${boardDto.no}'>${boardDto.title}</a></td>
-				<td class='date'>${boardDto.creDate}</td>
-				<td class='date'>${boardDto.modDate}</td>
+				<td>${boardDto.creDate}</td>
+				<td>${boardDto.modDate}</td>
 				
 			</tr>
 		</c:forEach>
