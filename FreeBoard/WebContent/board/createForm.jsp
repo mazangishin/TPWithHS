@@ -16,7 +16,7 @@
 		width: 500px;
 	}
 </style>
-<title>Insert title here</title>
+<title>게시글 쓰기</title>
 </head>
 <body>
 <h2>글쓰기</h2>

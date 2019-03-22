@@ -7,26 +7,33 @@
 <meta charset="UTF-8">
 <style type="text/css">
 	table{
-		width: 600px;
+		width: 800px;
 		border-collapse: collapse;
 	}
 	table, tr, td{
 		border: 1px solid black;
 	}
-
+	#title{
+		width: 400px;
+	}
 </style>
-<title>Insert title here</title>
+<title>게시판 목록</title>
 </head>
 <body>
 <jsp:include page="/Header.jsp"/>
 <table>
 
 <h2>게시판 목록</h2>
-	<button onclick='location.href="./create"'>글쓰기</button>
+	<c:if test="${sessionScope.member != null}">
+		<button onclick='location.href="./create"'>글쓰기</button>
+	</c:if>
+	<c:if test="${sessionScope.member == null}">
+		<button onclick='location.href="../auth/login"'>글쓰기</button>
+	</c:if>
 		<tr>
 			<td id='no'>번호</td><td>작성자</td>
-			<td>제목</td><td>작성일</td>
-			<td>수정일</td><td></td><td></td>
+			<td id='title'>제목</td><td>작성일</td>
+			<td>수정일</td>
 		</tr>	
 		<tr>
 	<c:forEach var="boardDto" items="${boardList}">
@@ -35,12 +42,7 @@
 			<td><a href='./read?no=${boardDto.no}'>${boardDto.title}</a></td>
 			<td>${boardDto.creDate}</td>
 			<td>${boardDto.modDate}</td>
-			<td><c:if test="${sessionScope.member.email eq boardDto.writer}">
-				<button onclick='location.href="./update?no=${boardDto.no}"'>수정</button></c:if>
-			</td>
-			<td><c:if test="${sessionScope.member.email eq boardDto.writer}">
-				<button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button></c:if>
-			</td>
+			
 		</tr>
 	</c:forEach>
 	</table>

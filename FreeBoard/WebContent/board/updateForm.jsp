@@ -28,7 +28,7 @@
 	}
 
 </style>
-<title>Insert title here</title>
+<title>게시글 수정</title>
 </head>
 <h2>수정하기</h2>
 <body>
