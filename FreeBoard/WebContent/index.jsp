@@ -11,7 +11,8 @@
 	<br>
 
 	<h1>
-	<a href="./auth/login">로그인</a>
+		<a href="./auth/login">로그인</a>
+	
 	</h1>
 	<br>
 	<h1>

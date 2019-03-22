@@ -26,6 +26,7 @@
 <title>게시글 보기</title>
 </head>
 <body>
+	<jsp:include page="../Header.jsp"/>
 	<h2>게시글 보기</h2>
 	<table>
 		<tr>
@@ -45,6 +46,6 @@
 		<button onclick='location.href="./update?no=${boardDto.no}"'>수정</button>
 		<button onclick='location.href="./delete?no=${boardDto.no}"'>삭제</button>
 	</c:if>
-	
+	<jsp:include page="../Footer.jsp"/>
 </body>
 </html>

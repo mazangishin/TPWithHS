@@ -20,16 +20,18 @@
 </head>
 <body>
 <h2>글쓰기</h2>
-	<form action="./create" method="post">
-		<table>
-			<tr>
-				<td id='title'>제목:<input name='title' type="text"></td>
-			</tr>	
-			<tr>
-				<td><textarea name='content' rows="30" cols="200"></textarea></td>
-			</tr>
-		</table>
-		<button type="submit">등록</button>
-	</form>
+	<jsp:include page="../Header.jsp"/>
+		<form action="./create" method="post">
+			<table>
+				<tr>
+					<td id='title'>제목:<input name='title' type="text"></td>
+				</tr>	
+				<tr>
+					<td><textarea name='content' rows="30" cols="200"></textarea></td>
+				</tr>
+			</table>
+			<button type="submit">등록</button>
+		</form>
+	<jsp:include page="../Footer.jsp"/>
 </body>
 </html>

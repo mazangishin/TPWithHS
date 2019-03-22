@@ -32,6 +32,7 @@
 </head>
 <h2>수정하기</h2>
 <body>
+	<jsp:include page="../Header.jsp"/>
 	<form action="./update" method="post">
 		<table>
 			<tr>
@@ -44,5 +45,6 @@
 		</table>
 		<input type="submit" value='수정'>
 	</form>
+	<jsp:include page="../Footer.jsp"/>
 </body>
 </html>

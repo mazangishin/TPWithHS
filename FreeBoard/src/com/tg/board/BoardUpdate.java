@@ -150,7 +150,7 @@ public class BoardUpdate extends HttpServlet{
 			pstmt.setInt(3, no);
 			
 			pstmt.executeUpdate();
-			res.sendRedirect("./read");
+			res.sendRedirect("./list");
 //			
 //			RequestDispatcher dispatcher = req.getRequestDispatcher("./list");
 //			
