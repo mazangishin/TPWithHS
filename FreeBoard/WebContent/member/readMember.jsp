@@ -46,7 +46,8 @@
 		
 		<input type="button" value="수정" onclick="location.href = './update?no=${member[0].memberNo}'">
 		<input type="button" value="삭제" onclick="location.href = './delete?no=${member[0].memberNo}'">
-		<input type="button" value="돌아가기" onclick="location.href = '../index.jsp'">
+		<input type="button" value="돌아가기" onclick="location.href = '../index.jsp'">		
+		<input type="button" value="게시판으로 가기" onclick="location.href = '../board/list'">		
 	</div>
 	
 	<jsp:include page="/Footer.jsp" />
